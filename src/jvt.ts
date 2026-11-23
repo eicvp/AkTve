@@ -1,4 +1,4 @@
-import {sign} from "hono/jwt"
+import {sign} from 'hono/jwt';
 
 export const createJWT = async (secret: string, sub: string): Promise<string> => {
     const now = Math.floor(Date.now() / 1000);
@@ -7,6 +7,6 @@ export const createJWT = async (secret: string, sub: string): Promise<string> =>
         sub,
         iat: now,
         exp: now + 30 * 60,
-        jti: crypro.randomUUID(),
-    }, secter, "HS256");
+        jti: crypto.randomUUID(),
+    }, secret, "HS256");
 }
